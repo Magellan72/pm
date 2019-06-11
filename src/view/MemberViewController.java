@@ -33,13 +33,13 @@ public class MemberViewController implements Initializable {
 	@FXML	private TextField tfID;
 	@FXML	private PasswordField tfPW;
 	@FXML	private TextField tfName;
-	@FXML	private TextField tfMobilePhone;
+	@FXML	private TextField tfContact;
 	
 	@FXML 	private TableView<Member> tableViewMember;
 	@FXML	private TableColumn<Member, String> columnName;
 	@FXML	private TableColumn<Member, String> columnID;
 	@FXML	private TableColumn<Member, String> columnPW;
-	//@FXML	private TableColumn<Member, String> columnMobilePhone;
+	@FXML	private TableColumn<Member, String> columnContact;
 	
 	// Member : model이라고도 하고 DTO, VO 라고도 함
 	// 시스템 밖에 저장된 정보를 객체들간에 사용하는 정보로 변환한 자료구조 또는 객체
@@ -57,10 +57,10 @@ public class MemberViewController implements Initializable {
 		
 		memberService = new MemberServiceImpl();
 		// 람다식 : java 8  함수형 언어 지원 
-		
-		columnName.setCellValueFactory(cvf -> cvf.getValue().unameProperty());				
 		columnID.setCellValueFactory(cvf -> cvf.getValue().uidProperty());
 		columnPW.setCellValueFactory(cvf -> cvf.getValue().upwProperty());
+		columnName.setCellValueFactory(cvf -> cvf.getValue().unameProperty());				
+		columnContact.setCellValueFactory(cvf -> cvf.getValue().upwProperty());
 		
 		tableViewMember.getSelectionModel().selectedItemProperty().addListener(
 				(observable, oldValue, newValue) -> showMemberInfo(newValue));
